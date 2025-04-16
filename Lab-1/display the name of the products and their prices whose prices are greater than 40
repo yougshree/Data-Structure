@@ -1,0 +1,154 @@
+
+/*A. Class and DMA
+1. A grocery shop owner wants to store the information about the products that he has in the stock.
+A product has its unique id, name, brand name, type (for example food, cosmetic, electronic etc.),
+quantity and price of each unit. First you have to design a class with appropriate entry according
+to the problem specification. You should have come up with something like this:
+class product
+{
+Private:
+int id;
+string name;
+........
+};
+
+a. Now create an array of the objects and let the user to decide how many products info he/she
+wants to store. Then store the information using the created array of objects. After that
+display the name of the products and their prices whose prices are greater than 40.*/
+#include <iostream>
+using namespace std;
+
+class Product{
+    private:
+      static int nextid;
+      int id;
+      string name;
+      string brand_name;
+      string type;
+      int quantity;
+      float price;
+      
+    public:
+     Product() //using default constructor
+     {
+         id=++nextid;
+         name="";
+         brand_name="";
+         type=="";
+         quantity=0;
+         price=0.0;
+     }
+//constructor parameter    
+     Product(string name, string brand_name, string type, int quality, float price)
+     {
+         id=++nextid;
+         this->name=name;
+         this->brand_name=brand_name;
+         this->type=type;
+         this->quantity=quantity;
+         this->price=price;
+     }
+//setter method     
+     
+     void setName(string name)
+     {
+        this->name=name; 
+     }
+     void setBrandName(string brand_name)
+     {
+        this->brand_name=brand_name; 
+     }
+     void setType(string type)
+     {
+        this->type=type; 
+     }
+     void setQuantity(int quantity)
+     {
+        this->quantity=quantity; 
+     }
+     void setPrice(float price)
+     {
+        this->price=price; 
+     }
+//getter method    
+     int getID()
+     {
+        return id;
+     }
+     string getName()
+     {
+        return name;
+     }
+     string getBrandName()
+     {
+        return brand_name;
+     }
+     string getType()
+     {
+        return type;
+     }
+     int getQuantity()
+     {
+        return quantity;
+     }
+     float getPrice()
+     {
+        return price;
+     }
+     
+     void displayProductGreaterThan40()
+     {
+         if(price>40)
+         {
+             cout<<"Product Nmae: "<<name<<", Price"<<price<<endl;
+         }
+     }
+};
+int Product::nextid=0;
+int main()
+{
+ int size;
+ 
+ cout<<"Enter the number of Products: ";
+ cin>> size;
+ Product product[size];
+
+ 
+ for(int i=0;i< size;i++)
+ {
+     int id, quantity;
+     string name, brand_name, type;
+     float price;
+ 
+   cout<<"Enter details of the product: " << i+1<<"\n";
+   
+   //cout<<"Enter product id: ";
+   //cin>>id;
+   
+   cout<<"Enter product name: ";
+   cin>>name;
+   cout<<"Enter product Brand Name: ";
+   cin>>brand_name;
+   cout<<"Enter product Type: ";
+   cin>>type;
+   cout<<"Enter product quantity: ";
+   cin>>quantity;
+   cout<<"Enter product Price: ";
+   cin>>price;
+   
+ //use setter method  
+   //product[i].setID(id);
+   product[i].setName(name);
+   product[i].setBrandName(brand_name);
+   product[i].setType(type);
+   product[i].setQuantity(quantity);
+   product[i].setPrice(price);
+ }  
+   cout<<"\n Products with Price Greater Than 40:\n";
+    for(int i=0; i<size;i++)
+    {
+        product[i].displayProductGreaterThan40();
+    }
+    
+    return 0;
+}
